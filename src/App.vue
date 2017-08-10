@@ -1,80 +1,80 @@
 <template>
-  <div id="app" :style="'background: '+currentColor+';'">
-    <h1>Hello App!</h1>
-    <h1>{{ currentColor }}</h1>
-    <chrome-picker v-model="colors" @change-color="onChange"></chrome-picker>
-    <p>
-      <router-link to="/">Hone</router-link>
-      <router-link to="/editor">New Story</router-link>
-      <router-link to="/story/1">Go to story 1</router-link>
-    </p>
-    <router-view :storys="storys"></router-view>
+  <div id="app">
+    <div class="container">
+      <nav class="navbar ">
+        <div class="navbar-brand">
+          <a class="navbar-item" href="/">
+            Vue Blog
+          </a>
+
+          <a class="navbar-item is-hidden-desktop" href="https://twitter.com/jgthms" target="_blank">
+            <span class="icon" style="color: #55acee;">
+              <i class="fa fa-twitter"></i>
+            </span>
+          </a>
+
+          <div class="navbar-burger burger" data-target="navMenuExample">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+        </div>
+
+        <div id="navMenuExample" class="navbar-menu">
+          <div class="navbar-start">
+          </div>
+
+          <div class="navbar-end">
+
+              <router-link to="/" class="navbar-item is-hidden-desktop-only">Home</router-link>
+              <router-link to="/posts/add" class="navbar-item is-hidden-desktop-only">
+                New Post
+              </router-link>
+              <router-link to="/posts/1" class="navbar-item is-hidden-desktop-only">
+                Go to post 1
+              </router-link>
+
+            <div class="navbar-item">
+              <div class="field is-grouped">
+                <p class="control">
+                  <a class="tw-button button"
+        data-social-network="Twitter"
+        data-social-action="tweet"
+        data-social-target="http://bulma.io"
+        target="_blank"
+        href="https://twitter.com/intent/tweet?text=Bulma: a modern CSS framework based on Flexbox&hashtags=bulmaio&url=http://bulma.io&via=jgthms">
+        <span class="icon">
+          <i class="fa fa-twitter"></i>
+        </span>
+        <span>
+          Tweet
+        </span>
+      </a>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </nav>
+      
+      <router-view></router-view>   
+
+    </div>
   </div>
 </template>
 
 <script>
-import { Chrome } from 'vue-color'
-
 export default {
   name: 'app',
   data () {
     return {
-      currentColor: '',
-      colors: {
-        hex: '#194d33',
-        hsl: {
-          h: 150,
-          s: 0.5,
-          l: 0.2,
-          a: 1
-        },
-        hsv: {
-          h: 150,
-          s: 0.66,
-          v: 0.30,
-          a: 1
-        },
-        rgba: {
-          r: 25,
-          g: 77,
-          b: 51,
-          a: 1
-        },
-        a: 1
-      },
-      storys: [
-        {
-          id: 77,
-          title: 'vue.js',
-          content: 'ง่ายมากๆ'
-        },
-        {
-          id: 2,
-          title: 'react',
-          content: 'โครตยาก'
-        }
-      ]
     }
-  },
-  components: {
-    'chrome-picker': Chrome
   },
   methods: {
-    onChange (param1) {
-      console.log(param1)
-      this.currentColor = param1.hex
-    }
   }
 }
 </script>
 
 <style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+
 </style>
